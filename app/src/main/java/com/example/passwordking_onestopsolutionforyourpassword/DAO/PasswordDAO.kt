@@ -17,6 +17,9 @@ interface PasswordDAO {
     @Query("SELECT * FROM passwords WHERE password = :password")
     suspend fun getPasswordByPassword(password: String): Password?
 
+    @Query("SELECT * FROM passwords WHERE title = :title AND password = :password")
+    suspend fun getPasswordByNameAndPassword(title: String, password: String): Password?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPassword(password: Password)
 

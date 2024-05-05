@@ -4,6 +4,7 @@ import android.app.AlertDialog
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +19,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
 
 
 class PasswordListAdapter(private val passwordList: List<Password>) :
@@ -46,6 +46,53 @@ class PasswordListAdapter(private val passwordList: List<Password>) :
                 showEditDialog(context, title, password)
             }
 
+            binding.ivDelete.setOnClickListener {
+                val context = itemView.context
+                val password = binding.tvPwd.text.toString()
+                val title = binding.tvPwdTitle.text.toString()
+
+                val alertDialog = AlertDialog.Builder(context)
+                    .setTitle("Delete Password")
+                    .setMessage("Are you sure you want to delete this password?")
+                    .setPositiveButton("Delete") { _, _ ->
+                        deletePassword(title, password)
+                        Toast.makeText(itemView.context, "Please Refresh", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    .setNegativeButton("Cancel", null)
+                    .create()
+
+                alertDialog.show()
+
+            }
+
+            binding.ivShare.setOnClickListener {
+                val context = itemView.context
+                val title = binding.tvPwdTitle.text.toString()
+                val password = binding.tvPwd.text.toString()
+
+                val shareIntent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT, "Title: $title\nPassword: $password")
+                    type = "text/plain"
+                }
+                context.startActivity(Intent.createChooser(shareIntent, "Share Password"))
+            }
+
+
+        }
+
+        private fun deletePassword(title: String, password: String) {
+            val passwordDAO = PasswordDatabase.getInstance(itemView.context).passwordDao()
+            CoroutineScope(Dispatchers.IO).launch {
+                val passwordEntity = passwordDAO.getPasswordByNameAndPassword(title, password)
+                passwordEntity?.let {
+                    passwordDAO.deletePassword(passwordEntity)
+
+                }
+
+
+            }
         }
 
         private fun showEditDialog(context: Context, title: String, password: String) {
