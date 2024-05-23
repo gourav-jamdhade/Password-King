@@ -49,6 +49,8 @@ https://github.com/gourav-jamdhade/Password-King/assets/76884856/d5bfef95-f705-4
   </tr>
 </table>
 
+**_Advanced Encryption Standard (AES)_**
+
 
 
 
