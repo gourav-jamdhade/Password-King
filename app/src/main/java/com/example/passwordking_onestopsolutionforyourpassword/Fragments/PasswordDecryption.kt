@@ -13,74 +13,69 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.passwordking_onestopsolutionforyourpassword.EncrytionUtils.AES
-import com.example.passwordking_onestopsolutionforyourpassword.EncrytionUtils.EncryptionViewModel
 import com.example.passwordking_onestopsolutionforyourpassword.R
-import com.example.passwordking_onestopsolutionforyourpassword.databinding.FragmentPasswordEncryptionBinding
+import com.example.passwordking_onestopsolutionforyourpassword.databinding.FragmentPasswordDecryptionBinding
 import java.util.Base64
 import javax.crypto.SecretKey
+import javax.crypto.spec.SecretKeySpec
 
 
-class PasswordEncryption : Fragment() {
+class PasswordDecryption : Fragment() {
 
-    private lateinit var viewModel: EncryptionViewModel
     private var progressDialog: ProgressDialog? = null
-    private val binding by lazy {
-        FragmentPasswordEncryptionBinding.inflate(layoutInflater)
-    }
-    private lateinit var secretKey: SecretKey
+
+    private val binding by lazy { FragmentPasswordDecryptionBinding.inflate(layoutInflater) }
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): View? {
         // Inflate the layout for this fragment
-        viewModel = ViewModelProvider(requireActivity()).get(EncryptionViewModel::class.java)
         progressDialog = ProgressDialog(requireContext())
-        encryptPassword()
         binding.toolbar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_passwordEncryption_to_homeFragment)
+            findNavController().navigate(R.id.action_passwordDecryption_to_homeFragment)
         }
+
+        decryptPassword()
         binding.btnCopyPwd.setOnClickListener {
-            copyToClipboard(binding.tVEncryptedPwd.text.toString(),"Encrypted Password")
+            copyToClipboard(binding.tVDecryptedPassword.text.toString(), "Decrypted Password")
         }
-
-        binding.btnCopySecretKey.setOnClickListener {
-            copyToClipboard(Base64.getEncoder().encodeToString(secretKey.encoded),"Secret Key")
-        }
-
-
         return binding.root
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun encryptPassword() {
-        binding.btnEncrypt.setOnClickListener {
+    private fun decryptPassword() {
+        binding.btnDecrypt.setOnClickListener {
             progressDialog?.setTitle("Encrypting Password")
             progressDialog?.setMessage("Encrypting.Please Wait") // Set a message to be displayed
             progressDialog?.setCancelable(false)
-            val plainText = binding.etPasswordTyped.text
-            var cipherText: String? = ""
 
-            if (plainText!!.isEmpty()) {
-                Toast.makeText(requireContext(), "Please enter your password", Toast.LENGTH_SHORT)
+            val password = binding.etEncrytpedPasswordTyped.text.toString()
+            val secretKeyString = binding.etSecretKeyTyped.text.toString()
+
+            val secretKey = decodeSecretKey(secretKeyString)
+
+            var decryptedPassword: String? = ""
+
+            if (password.isEmpty() || secretKeyString!!.isEmpty()) {
+                Toast.makeText(
+                    requireContext(),
+                    "Please enter your password and secret key",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
             } else {
-
-
                 try {
-
-                    secretKey = AES.generateAESKey()
-                    Log.d("SecretKey", Base64.getEncoder().encodeToString(secretKey.encoded))
-
-                    cipherText = AES.encrypt(plainText.toString(), secretKey)
-
+                    decryptedPassword = AES.decrypt(password, secretKey)
+                    Log.d("Decrypted Password", decryptedPassword)
 
                 } catch (e: Exception) {
-                    Toast.makeText(requireContext(), "${e.message}", Toast.LENGTH_SHORT).show()
+                    e.printStackTrace()
                 }
 
                 progressDialog!!.show()
@@ -88,16 +83,19 @@ class PasswordEncryption : Fragment() {
                 android.os.Handler().postDelayed({
                     // Dismiss the ProgressDialog when the task is done
                     progressDialog?.dismiss()
-                    binding.tVEncryptedPwd.text = cipherText
-                    binding.tvSecretKey.text = Base64.getEncoder().encodeToString(secretKey.encoded)
+                    binding.tVDecryptedPassword.text = decryptedPassword
                 }, 3000)
-
-
             }
         }
     }
 
-    private fun copyToClipboard(password: String,label: String) {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun decodeSecretKey(encodedKey: String): SecretKey {
+        val decodedKey = Base64.getDecoder().decode(encodedKey)
+        return SecretKeySpec(decodedKey, 0, decodedKey.size, "AES")
+    }
+
+    private fun copyToClipboard(password: String, label: String) {
         val clipBoardManager =
             requireActivity().getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         val clipData = ClipData.newPlainText("Password", password)
@@ -105,6 +103,5 @@ class PasswordEncryption : Fragment() {
 
         Toast.makeText(requireContext(), "$label Copied to clipboard", Toast.LENGTH_SHORT).show()
     }
-
 
 }
