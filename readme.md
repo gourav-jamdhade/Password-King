@@ -27,10 +27,8 @@ The app 4 main features of the app are as follows:
   </tr>
 </table>
 
-https://github.com/gourav-jamdhade/Password-King/assets/76884856/74d01bb7-3371-4228-8acd-f15c55c11746
 
-
-
+https://github.com/gourav-jamdhade/Password-King/assets/76884856/d5bfef95-f705-41d3-b1c2-c0a84149e711
 
 
 
