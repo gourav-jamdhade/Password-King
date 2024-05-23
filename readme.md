@@ -37,6 +37,20 @@ https://github.com/gourav-jamdhade/Password-King/assets/76884856/d5bfef95-f705-4
 <h4>2.Encryptor:</h4>
 
 
+<table align="center" border="0">
+  <tr>
+    <td><img src="https://github.com/gourav-jamdhade/Password-King/assets/76884856/926d3df2-fc11-4040-bd3a-a89e143fc812" width="200" height="400"/></td>
+    <td style="width: 10px;"></td>
+    <td><img src="https://github.com/gourav-jamdhade/Password-King/assets/76884856/33052e74-bdb3-4af7-8de3-6d6cf8fb65d2" width="200" height="400"/></td>
+    <td style="width: 10px;"></td>
+    <td><img src="https://github.com/gourav-jamdhade/Password-King/assets/76884856/a42a56fb-4603-4440-92ce-dcda1db4c983" width="200" height="400"/></td>
+    <td style="width: 10px;"></td>
+    <td><img src="https://github.com/gourav-jamdhade/Password-King/assets/76884856/0ecad60c-fc2d-4154-a132-a46b2c69d036" width="200" height="400"/></td>
+  </tr>
+</table>
+
+
+
 
 
 
