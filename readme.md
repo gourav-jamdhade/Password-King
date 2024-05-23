@@ -49,7 +49,20 @@ https://github.com/gourav-jamdhade/Password-King/assets/76884856/d5bfef95-f705-4
   </tr>
 </table>
 
-**_Advanced Encryption Standard (AES)_**
+**_Advanced Encryption Standard (AES)_** is used to encrypt the password the user can copy the encrypted "_**password**_" and "**_secret key_**".
+
+<h5>What is AES?</h5>
+The Advanced Encryption Standard (AES) is a symmetric block cipher chosen by the U.S. government to protect classified information.
+
+AES is implemented in software and hardware throughout the world to encrypt sensitive data. It is essential for government computer security, cybersecurity and electronic data protection. Since AES puts data through multiple encryption rounds and splits a message into smaller blocks of 128 bits, it is more secure and reliable than older symmetric encryption methods.
+
+<div align="center" >
+	 <div style="display: inline-block; border: 2px solid red;">
+        <img src="https://github.com/gourav-jamdhade/Password-King/assets/76884856/b8e6397c-b69c-402a-81a0-0f44f6cd915f" width="200" height="400" />
+    </div>
+</div>
+
+
 
 
 
