@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674963007268",
+    "project_id": "password-king-90198",
+    "storage_bucket": "password-king-90198.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674963007268:android:6ed62cb74e9a276bb9f5b1",
+        "android_client_info": {
+          "package_name": "com.example.passwordking_onestopsolutionforyourpassword"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9Yxrp2WuGcAXQXdfkljDY6BvOVqe0bPc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
