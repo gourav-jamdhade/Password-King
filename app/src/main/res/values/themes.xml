@@ -2,6 +2,9 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.PasswordKingOneStopSolutionForYourPassword" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
+        <item name="statusBarBackground">#041fb8</item>
+        <item name="android:navigationBarColor">@color/fb_blue</item>
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 

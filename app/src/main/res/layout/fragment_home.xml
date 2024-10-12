@@ -29,7 +29,7 @@
             <androidx.cardview.widget.CardView
 
                 android:id="@+id/cvPasswordGenerator"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="2.5dp"
                 android:layout_marginBottom="2.5dp"
@@ -38,27 +38,20 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
-                <LinearLayout
+
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/holo_blue_dark"
-                    android:orientation="vertical">
+                    android:src="@drawable/password_generator_icon" />
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity=""
-                        android:src="@drawable/password_generator_icon" />
-
-
-                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center"
+                    android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center"
                     android:text="Password Generator"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
@@ -67,7 +60,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvPasswordList"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="2.5dp"
                 android:layout_marginBottom="2.5dp"
@@ -76,27 +69,21 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/holo_blue_dark"
-                    android:orientation="vertical">
+                    android:padding="5dp"
+                    android:src="@drawable/password_list_icon" />
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:padding="5dp"
-                        android:src="@drawable/password_list_icon" />
-
-
-                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
                     android:text="Password List"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
@@ -125,28 +112,21 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
-                <LinearLayout
+
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/holo_blue_dark"
-                    android:orientation="vertical">
+                    android:padding="10dp"
+                    android:src="@drawable/password_encryption_icon" />
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:src="@drawable/password_encryption_icon" />
-
-
-                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
                     android:text="Encryptor"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
@@ -159,35 +139,28 @@
                 android:id="@+id/cvPasswordDecryption"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="2.5dp"
                 android:layout_marginStart="2.5dp"
+                android:layout_marginTop="2.5dp"
                 android:layout_weight=".5"
                 app:cardBackgroundColor="@android:color/holo_blue_dark"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp">
 
-                <LinearLayout
+
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:background="@android:color/holo_blue_dark"
-                    android:orientation="vertical">
+                    android:padding="10dp"
+                    android:src="@drawable/password_decryption_icon" />
 
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center_horizontal"
-                        android:padding="10dp"
-                        android:src="@drawable/password_decryption_icon" />
-
-
-                </LinearLayout>
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_gravity="bottom"
                     android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
                     android:text="Decryptor"
                     android:textColor="#FFFFFF"
                     android:textSize="20sp"
